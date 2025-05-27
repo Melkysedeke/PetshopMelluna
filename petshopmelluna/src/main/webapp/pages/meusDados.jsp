@@ -20,7 +20,7 @@
             --border-color: #E0E0E0;
             --focus-border-color: var(--accent-color);
             --card-bg: #FFFFFF;
-            --danger-color: #dc3545; /* Cor para botões de deleção */
+            --danger-color: #dc3545;
         }
 
         body {
@@ -174,9 +174,9 @@
             font-weight: 700;
             cursor: pointer;
             transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
-            flex-grow: 1; /* Faz os botões crescerem para preencher o espaço */
+            flex-grow: 1;
             text-align: center;
-            border: none; /* Remover borda default para consistência */
+            border: none;
         }
 
         .submit-button {
@@ -210,16 +210,11 @@
 </head>
 <body>
     <%
-        // Recupera o cliente logado da sessão
         Cliente clienteLogado = (Cliente) session.getAttribute("clienteLogado");
-
-        // Se não houver cliente logado, redireciona para a página de login
         if (clienteLogado == null) {
-            response.sendRedirect(request.getContextPath() + "/login.jsp"); // Ajuste o caminho conforme sua estrutura
+            response.sendRedirect(request.getContextPath() + "/login.jsp");
             return;
         }
-
-        // Recupera mensagens de sucesso ou erro do request (definidas pelo Controller)
         String mensagemSucesso = (String) request.getAttribute("mensagemSucesso");
         String mensagemErro = (String) request.getAttribute("mensagemErro");
     %>
@@ -287,7 +282,6 @@
     <script>
         function confirmarDelecao() {
             if (confirm("ATENÇÃO: Deletar sua conta é uma ação irreversível. Todos os seus dados, incluindo seus animais e agendamentos, serão removidos. Deseja realmente continuar?")) {
-                // Se o usuário confirmar, submete um formulário oculto para a ação de deleção
                 var form = document.createElement('form');
                 form.setAttribute('method', 'post');
                 form.setAttribute('action', '<%= request.getContextPath() %>/ClienteController');

@@ -18,7 +18,7 @@
             --bg-dark-color: #FFF0F5;
             --border-color: #E0E0E0;
             --focus-border-color: var(--accent-color);
-            --error-color: #DC3545; /* Cor para mensagens de erro */
+            --error-color: #DC3545;
         }
 
         body {
@@ -41,7 +41,7 @@
             padding: 25px;
             border-radius: 15px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            max-width: 450px; /* Mantém a largura consistente com o cadastro */
+            max-width: 450px;
             width: 100%;
             display: flex;
             flex-direction: column;
@@ -92,15 +92,15 @@
             margin-bottom: 3px;
             font-weight: 600;
             color: var(--text-color);
-            font-size: 0.9em; /* Ajuste para melhor legibilidade */
+            font-size: 0.9em;
         }
 
         input {
             width: calc(100% - 20px);
-            padding: 8px 10px; /* Ajuste para melhor usabilidade */
+            padding: 8px 10px;
             border: 1px solid var(--border-color);
             border-radius: 8px;
-            font-size: 1em; /* Ajuste para melhor legibilidade */
+            font-size: 1em;
             color: var(--text-color);
             transition: border-color 0.3s ease, box-shadow 0.3s ease;
         }
@@ -158,7 +158,6 @@
             text-decoration: underline;
         }
 
-        /* Responsividade (media queries para telas maiores) */
         @media (min-width: 600px) {
             .container {
                 padding: 30px;
@@ -189,7 +188,6 @@
         <h2>Login de Cliente <i class="fas fa-sign-in-alt icon"></i></h2>
 
         <%
-            // Verifica se há uma mensagem de erro vinda do ClienteController
             String mensagemErro = (String) request.getAttribute("mensagemErro");
             if (mensagemErro != null) {
         %>

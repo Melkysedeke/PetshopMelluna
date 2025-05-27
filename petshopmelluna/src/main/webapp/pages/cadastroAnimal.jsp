@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastrar Novo Animal - PetShop AmigoFiel 🐾</title>
+    <title>Cadastrar Novo Animal - PetShop Melluna 🐾</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
@@ -99,18 +99,18 @@
 
         .form-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr; /* Duas colunas */
-            gap: 15px 20px; /* Espaçamento entre linhas e colunas */
+            grid-template-columns: 1fr 1fr;
+            gap: 15px 20px;
             width: 100%;
         }
 
         .form-group {
             text-align: left;
-            margin-bottom: 0; /* Remover margem inferior padrão para usar o gap do grid */
+            margin-bottom: 0;
         }
 
         .form-group.full-width {
-            grid-column: 1 / -1; /* Ocupa todas as colunas */
+            grid-column: 1 / -1;
         }
 
         .form-group label {
@@ -191,14 +191,13 @@
             font-size: 0.8em;
         }
 
-        /* Responsividade para telas menores */
         @media (max-width: 550px) {
             .form-grid {
-                grid-template-columns: 1fr; /* Uma coluna em telas menores */
+                grid-template-columns: 1fr;
                 gap: 15px;
             }
             .form-group.full-width {
-                grid-column: auto; /* Reseta para uma coluna */
+                grid-column: auto;
             }
         }
     </style>
@@ -271,7 +270,7 @@
     </div>
 
     <footer>
-        &copy; <%= new java.text.SimpleDateFormat("yyyy").format(new java.util.Date()) %> PetShop AmigoFiel. Todos os direitos reservados.
+        &copy; <%= new java.text.SimpleDateFormat("yyyy").format(new java.util.Date()) %> PetShop Melluna. Todos os direitos reservados.
     </footer>
 </body>
 </html>

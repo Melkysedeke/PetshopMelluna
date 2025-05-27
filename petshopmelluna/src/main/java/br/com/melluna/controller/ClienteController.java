@@ -45,7 +45,6 @@ public class ClienteController extends HttpServlet {
                     session.setAttribute("clienteLogado", novoCliente);
                     response.sendRedirect(contextPath + "/pages/painelCliente.jsp");
                     break;
-
                 case "login":
                     String emailLogin = request.getParameter("email");
                     String senhaLogin = request.getParameter("senha");
@@ -60,7 +59,6 @@ public class ClienteController extends HttpServlet {
                         request.getRequestDispatcher("/pages/login.jsp").forward(request, response);
                     }
                     break;
-
                 case "logout":
                     session.invalidate();
                     response.sendRedirect(contextPath + "/index.jsp");
@@ -88,7 +86,6 @@ public class ClienteController extends HttpServlet {
                     request.setAttribute("mensagemSucesso", "Perfil atualizado com sucesso!");
                     request.getRequestDispatcher("/pages/meusDados.jsp").forward(request, response);
                     break;
-
                 default:
                     response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Ação inválida!");
                     break;

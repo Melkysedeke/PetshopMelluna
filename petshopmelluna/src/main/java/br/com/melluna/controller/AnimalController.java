@@ -57,11 +57,9 @@ public class AnimalController extends HttpServlet {
                     request.setAttribute("mensagemSucesso", "Animal cadastrado com sucesso!");
                     response.sendRedirect(request.getContextPath() + "/AnimalController?acao=listar");
                     break;
-
-                // Nova ação para atualizar animal
                 case "atualizar":
                     Animal animalAtualizar = new Animal();
-                    animalAtualizar.setIdAnimal(Integer.parseInt(request.getParameter("idAnimal"))); // ID do animal
+                    animalAtualizar.setIdAnimal(Integer.parseInt(request.getParameter("idAnimal")));
                     animalAtualizar.setNome(request.getParameter("nome"));
                     animalAtualizar.setRaca(request.getParameter("raca"));
                     animalAtualizar.setEspecie(request.getParameter("especie"));
@@ -72,7 +70,7 @@ public class AnimalController extends HttpServlet {
                         animalAtualizar.setPeso(0.0);
                     }
                     animalAtualizar.setObs(request.getParameter("obs"));
-                    animalAtualizar.setCpfCliente(clienteLogado.getCpf()); // Garante que o cliente logado é o dono
+                    animalAtualizar.setCpfCliente(clienteLogado.getCpf());
 
                     animalService.atualizarAnimal(animalAtualizar);
 
@@ -81,12 +79,11 @@ public class AnimalController extends HttpServlet {
                     break;
                 case "deletar":
                     int idAnimalDeletar = Integer.parseInt(request.getParameter("idAnimal"));
-                    animalService.deletarAnimal(idAnimalDeletar, clienteLogado.getCpf()); // Passa o CPF para verificação de posse
+                    animalService.deletarAnimal(idAnimalDeletar, clienteLogado.getCpf());
 
                     request.setAttribute("mensagemSucesso", "Animal excluído com sucesso!");
                     response.sendRedirect(request.getContextPath() + "/AnimalController?acao=listar");
                     break;
-
                 default:
                     response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Ação inválida para AnimalController!");
                     break;
@@ -114,28 +111,22 @@ public class AnimalController extends HttpServlet {
             response.sendRedirect(request.getContextPath() + "/pages/login.jsp");
             return;
         }
-
         try {
-            // Se a ação for nula ou vazia, define como "listar"
             if (acao == null || acao.isEmpty()) {
                 acao = "listar";
             }
-
             switch (acao) {
                 case "listar":
                     List<Animal> animais = animalService.listarAnimaisPorCliente(clienteLogado.getCpf());
                     request.setAttribute("animaisDoCliente", animais);
                     request.getRequestDispatcher("/pages/painelCliente.jsp").forward(request, response);
                     break;
-
                 case "cadastrarForm":
                     request.getRequestDispatcher("/pages/cadastroAnimal.jsp").forward(request, response);
                     break;
-
                 case "editarForm":
                     int idAnimalEditar = Integer.parseInt(request.getParameter("id"));
                     Animal animalParaEditar = animalService.buscarAnimalPorId(idAnimalEditar);
-
                     if (animalParaEditar != null && animalParaEditar.getCpfCliente().equals(clienteLogado.getCpf())) {
                         request.setAttribute("animal", animalParaEditar);
                         request.getRequestDispatcher("/pages/editarAnimal.jsp").forward(request, response);
@@ -144,8 +135,6 @@ public class AnimalController extends HttpServlet {
                         response.sendRedirect(request.getContextPath() + "/AnimalController?acao=listar"); 
                     }
                     break;
-
-
                 default:
                     response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Ação GET inválida para AnimalController!");
                     break;

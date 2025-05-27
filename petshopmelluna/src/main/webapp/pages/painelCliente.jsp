@@ -198,12 +198,12 @@
             transform: translateY(-1px);
         }
 
-        .animal-list-container { /* Novo container para a lista de animais */
+        .animal-list-container { 
             width: 100%;
             margin-top: 15px;
             text-align: left;
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* 2 colunas em telas maiores, ou mais */
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             gap: 20px;
         }
 
@@ -248,11 +248,11 @@
         }
 
         .animal-actions .action-button.edit:hover {
-            color: #28a745; /* Verde para editar */
+            color: #28a745;
         }
 
         .animal-actions .action-button.delete:hover {
-            color: #dc3545; /* Vermelho para deletar */
+            color: #dc3545;
         }
 
         .no-animals-message {
@@ -262,7 +262,7 @@
             border: 1px dashed var(--border-color);
             border-radius: 8px;
             margin-top: 10px;
-            grid-column: 1 / -1; /* Ocupa todas as colunas no grid */
+            grid-column: 1 / -1; 
         }
 
         .message {
@@ -352,7 +352,6 @@
             font-size: 0.8em;
         }
 
-        /* Responsividade */
         @media (max-width: 768px) {
             .header {
                 flex-direction: column;
@@ -388,7 +387,7 @@
                 justify-content: center;
             }
             .animal-list-container {
-                grid-template-columns: 1fr; /* Uma coluna em telas menores para a lista de animais */
+                grid-template-columns: 1fr;
             }
             .appointment-list {
                 grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -462,7 +461,6 @@
         <% } %>
 
         <div class="menu-grid">
-            <%-- "Meus Animais" foi removido pois a lista já aparece diretamente --%>
             <a href="<%= request.getContextPath() %>/pages/fazerAgendamento.jsp" class="menu-item">
                 <i class="fas fa-calendar-alt icon"></i>
                 Fazer Agendamento
@@ -535,13 +533,12 @@
         &copy; <%= new java.text.SimpleDateFormat("yyyy").format(new java.util.Date()) %> PetShop Melluna. Todos os direitos reservados.
     </footer>
     <script>
-        // Script para a confirmação de exclusão
         document.addEventListener('DOMContentLoaded', function() {
             const deleteForms = document.querySelectorAll('form[action$="AnimalController"][method="post"]');
             deleteForms.forEach(form => {
                 if (form.querySelector('input[name="acao"]').value === 'deletar') {
                     form.addEventListener('submit', function(event) {
-                        const animalNome = this.querySelector('p strong').nextSibling.textContent.trim(); // Ajustado para pegar o nome
+                        const animalNome = this.querySelector('p strong').nextSibling.textContent.trim();
                         if (!confirm('Tem certeza que deseja excluir o animal ' + animalNome + '?')) {
                             event.preventDefault();
                         }
