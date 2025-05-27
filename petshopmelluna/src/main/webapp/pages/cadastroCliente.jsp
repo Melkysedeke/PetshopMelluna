@@ -1,0 +1,212 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Cliente - PetShop Melluna 🐾</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #FF8BA7;
+            --secondary-color: #FFC0CB;
+            --accent-color: #A36A9F;
+            --text-color: #333333;
+            --light-text-color: #FFFFFF;
+            --bg-light-color: #F8F8F8;
+            --bg-dark-color: #FFF0F5;
+            --border-color: #E0E0E0;
+            --focus-border-color: var(--accent-color);
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-dark-color);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 15px;
+            box-sizing: border-box;
+            color: var(--text-color);
+            text-align: center;
+        }
+
+        .container {
+            background-color: var(--light-text-color);
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            max-width: 450px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+
+        h2 {
+            color: var(--primary-color);
+            font-size: 1.8em;
+            margin-bottom: 10px;
+            font-weight: 700;
+            letter-spacing: 0.8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        h2 .icon {
+            color: var(--accent-color);
+            font-size: 0.8em;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            gap: 10px;
+        }
+
+        .form-group {
+            text-align: left;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 3px;
+            font-weight: 600;
+            color: var(--text-color);
+            font-size: 0.6em; 
+        }
+
+        input {
+            width: calc(100% - 20px);
+            padding: 4px 10px; 
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            font-size: 0.5em; 
+            color: var(--text-color);
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: var(--focus-border-color);
+            box-shadow: 0 0 0 3px rgba(163, 106, 159, 0.2);
+        }
+
+        .botao {
+            margin-top: 15px;
+            background-color: var(--primary-color);
+            color: var(--light-text-color);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-size: 1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+            width: 100%;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .botao:hover {
+            background-color: var(--accent-color);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .botao .icon {
+            font-size: 1.1em;
+        }
+
+        .link-text {
+            margin-top: 10px;
+            font-size: 0.9em;
+            color: var(--text-color);
+        }
+
+        .link-text a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .link-text a:hover {
+            color: var(--accent-color);
+            text-decoration: underline;
+        }
+
+        @media (min-width: 600px) {
+            .container {
+                padding: 30px;
+                max-width: 400px;
+            }
+            h2 {
+                font-size: 2em;
+            }
+            label {
+                font-size: 1em; 
+            }
+            input {
+                font-size: 1em; 
+                padding: 10px;
+            }
+            .botao {
+                padding: 12px 25px;
+                font-size: 1.05em;
+            }
+            .link-text {
+                font-size: 0.95em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Cadastro de Cliente <i class="fas fa-user-plus icon"></i></h2>
+        <form action="<%= request.getContextPath() %>/ClienteController" method="post">
+            <input type="hidden" name="acao" value="cadastrar">
+
+            <div class="form-group">
+                <label for="nome">Nome:</label>
+                <input type="text" name="nome" id="nome" required>
+            </div>
+
+            <div class="form-group">
+                <label for="cpf">CPF:</label>
+                <input type="text" name="cpf" id="cpf" required>
+            </div>
+
+            <div class="form-group">
+                <label for="endereco">Endereço:</label>
+                <input type="text" name="endereco" id="endereco" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" name="email" id="email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="senha">Senha:</label>
+                <input type="password" name="senha" id="senha" required>
+            </div>
+
+            <button type="submit" class="botao">
+                <i class="fas fa-check-circle icon"></i> Cadastrar
+            </button>
+        </form>
+        <p class="link-text">Já tem cadastro? <a href="<%= request.getContextPath() %>/pages/login.jsp">Faça login aqui</a></p>
+    </div>
+</body>
+</html>
